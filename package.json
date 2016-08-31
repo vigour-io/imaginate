@@ -1,0 +1,59 @@
+{
+  "name": "imaginate",
+  "version": "1.0.0",
+  "description": "Construct images on the fly via a simple URL!",
+  "bin": {
+    "imaginator": "bin/imaginator"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "NODE_ENV=production ./bin/imaginator",
+    "dev": "NODE_ENV=development IMAGINATOR_PORT=3000 nodemon ./bin/imaginator",
+    "debug": "NODE_ENV=debug DEBUG=imaginator IMAGINATOR_PORT=3000 nodemon ./bin/imaginator",
+    "test": "NODE_ENV=test IMAGINATOR_PORT=3000 node test | tap-difflet  && standard",
+    "test-dev": "NODE_ENV=test IMAGINATOR_PORT=3000 nodemon test | tap-difflet",
+    "cover": "istanbul cover --report none --print detail test/index.js",
+    "view-cover": "istanbul report html && open ./coverage/index.html",
+    "travis": "npm run cover -s && istanbul report lcov && ((cat coverage/lcov.info | coveralls) || exit 0)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vigour-io/imaginate.git"
+  },
+  "keywords": [
+    "image",
+    "manipulation",
+    "effects",
+    "resize",
+    "blur",
+    "on-demand",
+    "js",
+    "javascript",
+    "url"
+  ],
+  "author": "Vigour.io <dev@vigour.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vigour-io/imaginate/issues"
+  },
+  "homepage": "https://github.com/vigour-io/imaginate#readme",
+  "contributors": [
+    "Shawn Inder <shawn@vigour.io>"
+  ],
+  "dependencies": {
+    "canvas": "^1.4.0",
+    "compression": "^1.6.2",
+    "connect": "^3.4.1",
+    "debug": "^2.2.0",
+    "lodash.merge": "^4.6.0",
+    "qs": "^6.2.1",
+    "request": "^2.74.0"
+  },
+  "engines": {},
+  "devDependencies": {
+    "errorhandler": "^1.4.3",
+    "istanbul": "^0.4.4",
+    "standard": "^7.1.2",
+    "tape": "^4.6.0"
+  }
+}

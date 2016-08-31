@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+'use strict'
+
+const imaginator = require('../lib/imaginator')
+var server = imaginator.start(function () {
+  console.log('Listening on port ' + server.address().port)
+})
