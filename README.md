@@ -3,6 +3,13 @@
 Construct images on the fly via a simple URL!
 
 <!-- VDOC.badges travis; standard; npm; coveralls -->
+<!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
+[![Build Status](https://travis-ci.org/vigour-io/imaginate.svg?branch=master)](https://travis-ci.org/vigour-io/imaginate)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![npm version](https://badge.fury.io/js/imaginate.svg)](https://badge.fury.io/js/imaginate)
+[![Coverage Status](https://coveralls.io/repos/github/vigour-io/imaginate/badge.svg?branch=master)](https://coveralls.io/github/vigour-io/imaginate?branch=master)
+
+<!-- VDOC END -->
 
 ## Install
 
@@ -11,6 +18,12 @@ You'll need to install Cairo as it currently can't be installed automatically wi
 ## Usage
 
 <!-- VDOC.jsdoc imaginate -->
+<!-- DON'T EDIT THIS SECTION (including comments), INSTEAD RE-RUN `vdoc` TO UPDATE -->
+#### var middleware = imaginate(options)
+- **options** (*object*) - Coming soon
+- **returns** (*function*) middleware - Responds to requests with images created using the info provided in the query string
+
+<!-- VDOC END -->
 
 ```javascript
 const imaginage = require('imaginate')
