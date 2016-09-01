@@ -44,6 +44,8 @@
     "canvas": "^1.4.0",
     "compression": "^1.6.2",
     "connect": "^3.4.1",
+    "ctx-identity": "^1.0.0",
+    "ctx-resize": "^1.0.0",
     "errorhandler": "^1.4.3",
     "lodash.merge": "^4.6.0",
     "qs": "^6.2.1",
