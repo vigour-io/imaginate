@@ -11,8 +11,7 @@ const imaginator = require('../lib/imaginator')
 
 const source = 'http://localhost:3001'
 var sourceHandle
-var srcData
-var src
+var srcImg
 test('SETUP', function (t) {
   const server = http.createServer(function (req, res) {
     res.statusCode = 200
@@ -20,13 +19,12 @@ test('SETUP', function (t) {
     rs.pipe(res)
   })
   sourceHandle = server.listen(3001, function () {
-    request(source, function (error, response, data) {
+    request(source, { encoding: null }, function (error, response, data) {
       if (error) {
         throw new Error('Unable to get source image: ' + error)
       }
-      srcData = data
-      src = new Canvas.Image()
-      src.src = srcData
+      srcImg = new Canvas.Image()
+      srcImg.src = data
       t.end()
     })
   })
@@ -55,7 +53,7 @@ function createImg (t, transforms, cb) {
       t.equal(observed.length > 0, true, 'an image is created')
       handle.close(function () {
         t.equal(errors === 0, true, 'no errors and everything can be terminated properly')
-        cb()
+        cb(observed)
       })
     })
   })
@@ -65,8 +63,8 @@ test('imaginator', function (t) {
   createImg(t, [], function (observed) {
     var img = new Canvas.Image()
     img.src = observed
-    t.equal(img.width, src.width, 'correct width')
-    t.equal(img.height, src.height, 'correct height')
+    t.equal(img.width, srcImg.width, 'correct width')
+    t.equal(img.height, srcImg.height, 'correct height')
     t.end()
   })
 })
@@ -76,13 +74,10 @@ test('imaginator + identity', function (t) {
     ['ctx-identity']
   ], function (observed) {
     var img = new Canvas.Image()
-    img.onLoaded = function () {
-      console.log('loaded')
-      t.equal(img.width, src.width, 'correct width')
-      t.equal(img.height, src.height, 'correct height')
-      t.end()
-    }
     img.src = observed
+    t.equal(img.width, srcImg.width, 'correct width')
+    t.equal(img.height, srcImg.height, 'correct height')
+    t.end()
   })
 })
 
