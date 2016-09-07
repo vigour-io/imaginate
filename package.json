@@ -8,7 +8,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "NODE_ENV=production ./bin/imaginator",
-    "dev": "NODE_ENV=development IMAGINATOR_PORT=3000 nodemon ./bin/imaginator",
+    "dev": "NODE_ENV=development IMAGINATOR_PORT=3000 IMAGINATOR_PASS=secret nodemon ./bin/imaginator",
     "debug": "NODE_ENV=debug IMAGINATOR_PORT=3000 nodemon ./bin/imaginator",
     "test": "NODE_ENV=test IMAGINATOR_PORT=3000 node test | tap-difflet  && standard",
     "test-dev": "NODE_ENV=test IMAGINATOR_PORT=3000 nodemon test | tap-difflet",
@@ -41,16 +41,17 @@
     "Shawn Inder <shawn@vigour.io>"
   ],
   "dependencies": {
+    "basic-auth": "^1.0.4",
     "canvas": "^1.4.0",
     "compression": "^1.6.2",
     "connect": "^3.4.1",
-    "ctx-identity": "^1.0.0",
-    "ctx-resize": "^1.0.0",
     "errorhandler": "^1.4.3",
     "lodash.merge": "^4.6.0",
     "qs": "^6.2.1",
+    "redis": "^2.6.2",
     "request": "^2.74.0",
-    "urlinate": "^1.0.0"
+    "urlinate": "^1.0.0",
+    "vigour-spawn": "^1.0.9"
   },
   "engines": {},
   "devDependencies": {

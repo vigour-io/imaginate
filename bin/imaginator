@@ -1,7 +1,25 @@
 #!/usr/bin/env node
 'use strict'
 
+var cloud = require('../lib/cloud')
+
 const imaginator = require('../lib/imaginator')
-var server = imaginator.start(function () {
+imaginator.start({
+  whitelist (item, cb) {
+    cloud.get('whitelist', function (err, whitelistJson) {
+      if (err) {
+        cb(err)
+      } else {
+        let whitelist = JSON.parse(whitelistJson)
+        // console.log('item', item)
+        // console.log('whitelist', whitelist)
+        cb(null, !!whitelist[item])
+      }
+    })
+  }
+}, function (err, server) {
+  if (err) {
+    throw err
+  }
   console.log('Listening on port ' + server.address().port)
 })

@@ -34,7 +34,18 @@ app.use('/images', middleware)
 
 The returned middlware expects the following query string parameters to be provided with each request (preferably via [urlinate](npmjs.com/package/urlinate)) and responds with the created image.
   - **input** {*string*} - URL of original image to download a inject in a canvas context.
-  - **use** {*array*} - List of context transforms to apply, in order. Each item should be an array with two items, the first being a url specifying where to get the transform from, the second being an options object specifying the options to use for that transform (see transform docs).
+  - **use** {*array*} - List of context transforms to apply (package name or url), in order. Each item should be an array with two items, the first being a url specifying where to get the transform from, the second being an options object specifying the options to use for that transform (see transform docs).
+
+## Transforms
+
+If the transform is a URL, imaginate will execute the file at that URL
+
+## Whitelisting transforms
+
+I hope that reading this gave you the chills. *Are they really allowing people to execute arbitrary code on their machines via a simple GET request?* This is where the whitelisting feature comes in.
+
+- `GET /whitelist` responds with the whitelist as JSON
+- `POST /whitelist` allows you to update the whitelist and is subject to basic authentication (username: `admin`, password: `process.env.IMAGINATOR_PASS`.
 
 ## Imaginator URLs
 
