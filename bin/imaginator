@@ -11,9 +11,11 @@ imaginator.start({
         cb(err)
       } else {
         let whitelist = JSON.parse(whitelistJson)
-        // console.log('item', item)
-        // console.log('whitelist', whitelist)
-        cb(null, !!whitelist[item])
+        if (whitelist) {
+          cb(null, !!whitelist[item])
+        } else {
+          cb(null, false)
+        }
       }
     })
   }
