@@ -91,7 +91,15 @@ http.get('IMAGINATOR_URL', ...)
 
 ## npm start
 
-Launches a production-ready http server using this middleware
+Launches a production-ready http server using this middleware.
+
+This server also provides a `/whitelist` route which you can GET or POST json to. This whitelist is a `package.json['dependencies']`-style json object listing the allowed canvas transforms. This whitelist will be saved as a json file on S3 so that it can persist after a crash or restart. To authenticate with S3, the imaginator expects the following environment variables to be set:
+
+- `IMAGINATOR_AWS_ACCESS_KEY_ID`
+- `IMAGINATOR_AWS_SECRET_ACCESS_KEY`
+- `IMAGINATOR_BUCKET`
+
+It also expects a file called `whitelist` to exist within the specified bucket.
 
 ### Deployment
 
