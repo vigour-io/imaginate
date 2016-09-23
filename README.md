@@ -103,7 +103,7 @@ This server also provides a `/whitelist` route which you can GET or POST json to
 - `IMAGINATOR_AWS_SECRET_ACCESS_KEY`
 - `IMAGINATOR_BUCKET`
 
-It also expects a file called `whitelist` to exist within the specified bucket.
+It also expects the IAM user to be associated to a policy giving it read and write permissions on the correct bucket and expects a file called `whitelist.json` to exist within the specified bucket and to be valid JSON (should look like the `dependencies` object in a package.json file). For more, have a fun time geting lost in the (poor but plentiful) aws documentation.
 
 ### Deployment
 
