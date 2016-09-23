@@ -2,19 +2,24 @@
 'use strict'
 
 var cloud = require('../lib/cloud')
-
+const error = require('../lib/error')
 const imaginator = require('../lib/imaginator')
+
 imaginator.start({
   whitelist (item, cb) {
     cloud.get('whitelist', function (err, whitelistJson) {
       if (err) {
         cb(err)
       } else {
-        let whitelist = JSON.parse(whitelistJson)
-        if (whitelist) {
-          cb(null, !!whitelist[item])
-        } else {
-          cb(null, false)
+        try {
+          let whitelist = JSON.parse(whitelistJson)
+          if (whitelist) {
+            cb(null, !!whitelist[item])
+          } else {
+            cb(null, false)
+          }
+        } catch (e) {
+          error('Stored whitelist is not valid JSON', e)
         }
       }
     })

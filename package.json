@@ -41,6 +41,7 @@
     "Shawn Inder <shawn@vigour.io>"
   ],
   "dependencies": {
+    "aws-sdk": "^2.6.3",
     "basic-auth": "^1.0.4",
     "canvas": "^1.4.0",
     "compression": "^1.6.2",
@@ -48,7 +49,6 @@
     "errorhandler": "^1.4.3",
     "lodash.merge": "^4.6.0",
     "qs": "^6.2.1",
-    "redis": "^2.6.2",
     "request": "^2.74.0",
     "urlinate": "^1.0.0",
     "vigour-observable": "^3.1.19",
