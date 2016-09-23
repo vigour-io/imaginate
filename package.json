@@ -51,6 +51,7 @@
     "redis": "^2.6.2",
     "request": "^2.74.0",
     "urlinate": "^1.0.0",
+    "vigour-observable": "^3.1.19",
     "vigour-spawn": "^1.0.9"
   },
   "engines": {},
