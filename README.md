@@ -47,6 +47,10 @@ I hope that reading this gave you the chills. *Are they really allowing people t
 - `GET /whitelist` responds with the whitelist as JSON
 - `POST /whitelist` allows you to update the whitelist and is subject to basic authentication (username: `admin`, password: `process.env.IMAGINATOR_PASS`.
 
+## When transforms throw
+
+Transforms are encouraged to throw really nice errors as these are passed along as-is to the user
+
 ## Imaginator URLs
 
 Supposing there is an imaginator running at http://imaginator.io...
