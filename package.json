@@ -57,6 +57,8 @@
   },
   "engines": {},
   "devDependencies": {
+    "ctx-identity": "^1.0.1",
+    "ctx-resize": "^1.0.1",
     "istanbul": "^0.4.4",
     "standard": "^7.1.2",
     "tape": "^4.6.0"
