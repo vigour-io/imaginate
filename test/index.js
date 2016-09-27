@@ -34,7 +34,6 @@ test('SETUP', function (t) {
 
 function createImg (t, transforms, cb) {
   var errors = 0
-
   imaginator.start({ whitelist: false }, function (err, handle) {
     if (err) {
       t.fail('Failed to start imaginator: ' + err)
@@ -48,8 +47,9 @@ function createImg (t, transforms, cb) {
       if (error) {
         errors += 1
         t.fail('Failed getting transformed image ' + error)
+      } else {
+        t.equal(observed.length > 0, true, 'an image is created')
       }
-      t.equal(observed.length > 0, true, 'an image is created')
       handle.close(function () {
         t.equal(errors, 0, 'no errors and everything can be terminated properly')
         cb(observed)
