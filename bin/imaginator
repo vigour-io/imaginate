@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 'use strict'
 console.log('Starting Imaginator')
+console.log('NODE_ENV', process.env.NODE_ENV)
+console.log('IMAGINATOR_PORT', process.env.IMAGINATOR_PORT)
+console.log('IMAGINATOR_PASS', process.env.IMAGINATOR_PASS)
+console.log('IMAGINATOR_SLACK_CHANNEL', process.env.IMAGINATOR_SLACK_CHANNEL)
+console.log('IMAGINATOR_SLACK_TOKENS', process.env.IMAGINATOR_SLACK_TOKENS)
+console.log('IMAGINATOR_AWS_ACCESS_KEY_ID', process.env.IMAGINATOR_AWS_ACCESS_KEY_ID)
+console.log('IMAGINATOR_AWS_SECRET_ACCESS_KEY', process.env.IMAGINATOR_AWS_SECRET_ACCESS_KEY)
+console.log('IMAGINATOR_BUCKET', process.env.IMAGINATOR_BUCKET)
 var cloud = require('../lib/cloud')
 const error = require('../lib/error')
 const imaginator = require('../lib/imaginator')
@@ -26,6 +34,7 @@ imaginator.start({
   }
 }, function (err, server) {
   if (err) {
+    console.log('ERROR starting imaginator', err)
     throw err
   }
   console.log('Listening on port ' + server.address().port)
