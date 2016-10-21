@@ -108,14 +108,13 @@ It also expects the IAM user to be associated to a policy giving it read and wri
 ### Deployment
 
 ```sh
-now
+now\
+  -e IMAGINATOR_PORT=$IMAGINATOR_PORT\
+  -e IMAGINATOR_PASS=$IMAGINATOR_PASS\
+  -e IMAGINATOR_SLACK_CHANNEL=$IMAGINATOR_SLACK_CHANNEL\
+  -e IMAGINATOR_SLACK_TOKENS=$IMAGINATOR_SLACK_TOKENS\
+  -e IMAGINATOR_AWS_ACCESS_KEY_ID=$IMAGINATOR_AWS_ACCESS_KEY_ID\
+  -e IMAGINATOR_AWS_SECRET_ACCESS_KEY=$IMAGINATOR_AWS_SECRET_ACCESS_KEY\
+  -e IMAGINATOR_BUCKET=$IMAGINATOR_BUCKET
 ```
-See [nowjs.org](nowjs.org)
-
-Also works out of the box on **Heroku**
-
-```sh
-git remote add <your_heroku_remote>
-git push heroku master
-```
-
+...then press `2` for *Dockerfile* (see [nowjs.org](nowjs.org))
