@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict'
-
+console.log('Starting Imaginator')
 var cloud = require('../lib/cloud')
 const error = require('../lib/error')
 const imaginator = require('../lib/imaginator')
