@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 'use strict'
-console.log('Starting Imaginator')
+console.log('Starting Imaginator!')
+console.log('Can we see these logs?')
+console.log('process', process)
+console.log('process.env', process.env)
 console.log('NODE_ENV', process.env.NODE_ENV)
 console.log('IMAGINATOR_PORT', process.env.IMAGINATOR_PORT)
 console.log('IMAGINATOR_PASS', process.env.IMAGINATOR_PASS)
