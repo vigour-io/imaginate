@@ -109,7 +109,6 @@ It also expects the IAM user to be associated to a policy giving it read and wri
 
 ```sh
 now\
-  -e IMAGINATOR_PORT=$IMAGINATOR_PORT\
   -e IMAGINATOR_PASS=$IMAGINATOR_PASS\
   -e IMAGINATOR_SLACK_CHANNEL=$IMAGINATOR_SLACK_CHANNEL\
   -e IMAGINATOR_SLACK_TOKENS=$IMAGINATOR_SLACK_TOKENS\
