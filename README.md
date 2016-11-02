@@ -53,7 +53,7 @@ Transforms are encouraged to throw really nice errors as these are passed along 
 
 ## Imaginator URLs
 
-Supposing there is an imaginator running at http://imaginator.io...
+Supposing there is an imaginator running at http://imaginator.io,
 
 ```javascript
 var urlinate = require('urlinate')
@@ -67,6 +67,8 @@ var url = urlinate('http://imaginator.io', {
   ]
 })
 ```
+
+Notice the helper function, [urlinate](https://www.npmjs.com/package/urlinate).
 
 Then use the URL like any image URL:
 
@@ -97,16 +99,32 @@ http.get('IMAGINATOR_URL', ...)
 
 Launches a production-ready http server using this middleware.
 
+### Required environment variables
+
+#### Whitelist
+
 This server also provides a `/whitelist` route which you can GET or POST json to. This whitelist is a `package.json['dependencies']`-style json object listing the allowed canvas transforms. This whitelist will be saved as a json file on S3 so that it can persist after a crash or restart. To authenticate with S3, the imaginator expects the following environment variables to be set:
 
 - `IMAGINATOR_AWS_ACCESS_KEY_ID`
 - `IMAGINATOR_AWS_SECRET_ACCESS_KEY`
 - `IMAGINATOR_BUCKET`
 
-It also expects the IAM user to be associated to a policy giving it read and write permissions on the correct bucket and expects a file called `whitelist.json` to exist within the specified bucket and to be valid JSON (should look like the `dependencies` object in a package.json file). For more, have a fun time geting lost in the (poor but plentiful) aws documentation.
+It also expects the IAM user to be associated to a policy giving it read and write permissions on the correct bucket and expects a file called `whitelist.json` to exist within the specified bucket and to be valid JSON (should look like the `dependencies` object in a package.json file). For more, have a fun time getting lost in the (poor but plentiful) AWS documentation.
 
-### Deployment
+Finally, modifying the whitelist requires basic Authentication. The username is always `admin`, but the password is determined by the value of the `IMAGINATOR_PASS` environment variable.
 
+- `IMAGINATOR_PASS`
+
+#### Warnings and Alerts
+
+In production (`NODE_ENV === 'production'`), this server will send all warnings and alerts to Slack as configured by:
+
+- `IMAGINATOR_SLACK_TOKENS`
+- `IMAGINATOR_SLACK_CHANNEL`
+
+## Deployment
+
+#### nowjs
 ```sh
 now\
   -e IMAGINATOR_PASS=$IMAGINATOR_PASS\
@@ -117,3 +135,21 @@ now\
   -e IMAGINATOR_BUCKET=$IMAGINATOR_BUCKET
 ```
 ...then press `2` for *Dockerfile* (see [nowjs.org](nowjs.org))
+
+#### Docker
+
+1. Build the image
+```sh
+docker build -t imaginator .
+```
+2. Launch the image
+```sh
+docker run --rm -ti -p 3000:3000\
+  -e IMAGINATOR_PASS=$IMAGINATOR_PASS\
+  -e IMAGINATOR_SLACK_CHANNEL=$IMAGINATOR_SLACK_CHANNEL\
+  -e IMAGINATOR_SLACK_TOKENS=$IMAGINATOR_SLACK_TOKENS\
+  -e IMAGINATOR_AWS_ACCESS_KEY_ID=$IMAGINATOR_AWS_ACCESS_KEY_ID\
+  -e IMAGINATOR_AWS_SECRET_ACCESS_KEY=$IMAGINATOR_AWS_SECRET_ACCESS_KEY\
+  -e IMAGINATOR_BUCKET=$IMAGINATOR_BUCKET\
+  imaginator
+```
