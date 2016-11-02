@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install libcairo2-dev && apt-get clean && rm -rf /
 WORKDIR /var/git
 RUN git clone https://github.com/vigour-io/imaginate.git
 WORKDIR /var/git/imaginate
-RUN npm i
+RUN npm i --production
 ENV IMAGINATOR_PORT=3000
 EXPOSE 3000
 CMD ["npm", "start"]
