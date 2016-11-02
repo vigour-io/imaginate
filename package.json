@@ -1,6 +1,6 @@
 {
   "name": "imaginate",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Construct images on the fly via a simple URL!",
   "bin": {
     "imaginator": "bin/imaginator"
