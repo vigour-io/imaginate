@@ -129,6 +129,10 @@ In production (`NODE_ENV === 'production'`), this server will send all warnings 
 - `IMAGINATOR_SLACK_TOKENS`
 - `IMAGINATOR_SLACK_CHANNEL`
 
+### Optional environment variables
+
+- `IMAGINATOR_PORT` - defaults to 0 (find any available port)
+
 ## Deployment
 
 #### Docker
