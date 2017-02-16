@@ -38,7 +38,14 @@ The returned middlware expects the following query string parameters to be provi
 
 ## Transforms
 
-If the transform is a URL, imaginate will execute the file at that URL
+Any npm package name can be provided as transform, but only those which expose a canvas middleware function will work. For the exact specifications, see the identity transform, [ctx-identity]](https://www.npmjs.com/package/ctx-identity)
+
+Here is a list of known transforms:
+
+- [ctx-resize](https://www.npmjs.com/package/ctx-resize)
+- [ctx-blur](https://www.npmjs.com/package/ctx-blur)
+- [ctx-identity](https://www.npmjs.com/package/ctx-identity)
+
 
 ## Whitelisting transforms
 
